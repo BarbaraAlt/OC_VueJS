@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>My First App VueJS</title>
+	<!--<link rel="stylesheet" href="./styles.css" /> -->
+</head>
+
+
+<body>
+
+
+	<div id="app">
+		<h1>
+			P1-C1 VueJS
+		</h1>
+		<p>
+			Let's show some data
+		</p>
+		<ul>
+
+			<li>Name: {{ nom }}</li>
+			<li>Age: {{age}},</li>
+			<li>Human: {{human}},</li>
+			<li>Clothes: {{clothes}},</li>
+			<li>IdentityCard:
+				<ul>
+					<li>Number: {{identityCard.number }},</li>
+					<li>Type: {{identityCard.type}}</li>
+				</ul>
+			</li>
+		</ul>
+
+	</div>
+
+
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<!-- Contenu temporairement caché pour cet exemple ,-->
+	<script>
+		const app = new Vue({
+			el: '#app',
+			data: {
+				nom: 'Bdu',
+				age: 99,
+				human: true,
+				clothes: ['teeShirt', 'pants'],
+				identityCard: {
+					number: 010203,
+					type: 'citizen'
+				}
+			}
+		})
+	</script>
+
+
+</body>
+
+</html>
