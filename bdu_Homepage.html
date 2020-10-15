@@ -12,7 +12,7 @@
 
 	<div id="app">
 		<h1>
-			P1-C1 VueJS
+			P2 VueJS
 		</h1>
 		<p>
 			Let's show some data
@@ -29,6 +29,7 @@
 					<li>Type: {{identityCard.type}}</li>
 				</ul>
 			</li>
+			<li>Number of boats: {{getTotalBoats}},</li>
 		</ul>
 
 	</div>
@@ -47,6 +48,15 @@
 				identityCard: {
 					number: 010203,
 					type: 'citizen'
+				},
+				boatYatch: 1,
+				boatSail: 3
+
+			},
+
+			computed: {
+				getTotalBoats: function () {
+					return this.boatYatch + this.boatSail
 				}
 			}
 		})
