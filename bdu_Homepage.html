@@ -19,7 +19,10 @@
 		</p>
 		<ul>
 
-			<li>Name: {{ nom }}</li>
+			<li>
+				Name: {{name}}
+				<input type='text' v-model="name" />
+			</li>
 			<li>Age: {{age}},</li>
 			<li>Human: {{human}},</li>
 			<li>Clothes: {{clothes}},</li>
@@ -30,8 +33,20 @@
 				</ul>
 			</li>
 			<li>Number of boats: {{getTotalBoats}},</li>
+
+			<li>Type of boats:
+				<ul>
+					<li v-for=" boat in boatList">
+						<a> {{boat.type}} {{boat.name}}</a>
+					</li>
+				</ul>
+			</li>
 		</ul>
 
+		<div>
+			<button v-on:click="alertHelloWorld('Bonjour')">Cliquez ici !</button>
+			<input type='text' @keyup.enter="changeMessage" />
+		</div>
 	</div>
 
 
@@ -41,7 +56,7 @@
 		const app = new Vue({
 			el: '#app',
 			data: {
-				nom: 'Bdu',
+				name: 'Bdu',
 				age: 99,
 				human: true,
 				clothes: ['teeShirt', 'pants'],
@@ -50,13 +65,35 @@
 					type: 'citizen'
 				},
 				boatYatch: 1,
-				boatSail: 3
+				boatSail: 2,
+				message: 'Hello World',
 
+				boatList: [
+					{ type: 'yatch', name: 'A' },
+					{ type: 'sail', name: 'B' },
+					{ type: 'sail', name: 'C' }
+				]
 			},
 
 			computed: {
 				getTotalBoats: function () {
 					return this.boatYatch + this.boatSail
+				},
+
+				getMesage: function () {
+					return this.message
+				}
+			},
+
+
+			methods: {
+				alertHelloWorld(sendMsg) {
+					alert(sendMsg + '  ' + this.message)
+				},
+
+				changeMessage() {
+					this.message = 'success change msg'
+					this.alertHelloWorld(this.message)
 				}
 			}
 		})
